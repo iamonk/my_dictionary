@@ -1,11 +1,13 @@
 # Importing Stuff
 import secret
+import sub_direc_rule as sb
 import requests as requests
+import time
 
 
 
 #word=input("Enter Word to be searched:  ")
-word="pajama"
+word="3-D"
 
 
 #Final url
@@ -25,7 +27,11 @@ for d in defi:
 
 pron_list=r[0]['hwi']['prs']
 sound=[x['sound']['audio'] for x in pron_list]
-print(sound)
+
+sub_dir_l=sb.sub_dir(sound)
+print(sub_dir_l)
+
+audio_url=f"{secret.audio_url}{sub_dir_l[0]}/{sound[0]}.mp3"
 
 
 # audio_url=f"{secret.audio_url}" 
