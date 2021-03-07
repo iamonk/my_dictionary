@@ -5,20 +5,29 @@ import requests as requests
 
 
 #word=input("Enter Word to be searched:  ")
-word="Desire"
+word="pajama"
+
 
 #Final url
 final_url=f"{secret.url}{word}?key={secret.dict_api_key}"
 
 
-#Fetching Data
-r = requests.get(final_url)
-r=r.json()
-#meta=r['meta']['id']
-#print(meta)
-print(type(r))
+#Fetching and converting Data
+r = requests.get(final_url).json()
 
+#Short Defination
 defi=r[0]['shortdef']
 for d in defi:
     print("\n",d)
 
+
+#Audio
+
+pron_list=r[0]['hwi']['prs']
+sound=[x['sound']['audio'] for x in pron_list]
+print(sound)
+
+
+# audio_url=f"{secret.audio_url}" 
+# audio=r[1]
+# print(audio)
